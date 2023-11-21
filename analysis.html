@@ -138,7 +138,7 @@
 <img src="compare.png" />
 
 </div>
-<p>Our calculations find that the chance is 0.0001633% (step 5). That’s really small. Thumbs up! OK! 100! It’s a level 4 significance, which is very ahrd to get in sociological data; as such, we can safely say that death and gender are related to each other (since we just showed that them not being related to each other is very <em>unlikely</em>).</p>
+<p>Our calculations find that the chance is 0.0001633% (step 5). That’s really small. Thumbs up! OK! 100! It’s a level 4 significance, which is very hard to get in sociological data; as such, we can safely say that death and gender are related to each other (since we just showed that them <em>not</em> being related to each other is very <em>unlikely</em>).</p>
 <p>For the statistically inclined, yes, this was a very verbose chi-square test.</p>
 </div>
 <div id="looking-back-queer-death-over-time" class="section level3">
@@ -177,7 +177,7 @@
 <div id="doesnt-gender-affect-things" class="section level3">
 <h3><span class="header-section-number">1.4.3</span> Doesn’t Gender Affect Things?</h3>
 <p>We know that gender is important overall, so it’s worth checking out whether it affects the year-to-year death rate. This isn’t something we can get hard proof for; the structure of the data makes doing those tests impossible, so we can only get an indication as to whether it might have an impact.</p>
-<p>To do this we split the data up by gender and run two separate regressions. If the lines are different, that suggests that gender is having an impact; if it wasn’t, then splitting up the regressions by gender wouldn’t change the lines and they would look the same.</p>
+<p>To do this we split the data up by gender and run two separate regressions. If the lines are different, that suggests that gender is having an impact; if the lines are the same, then gender isn't affecting them.</p>
 <div class="figure">
 <img src="menregression.png" />
 
@@ -190,7 +190,7 @@
 </div>
 <div id="outlier-points-or-2016-is-messing-everything-up-as-usual" class="section level3">
 <h3><span class="header-section-number">1.4.4</span> Outlier Points (Or: 2016 Is Messing Everything Up, As Usual)</h3>
-<p>Since we know what’s happening with the death rate, we can now start to work out whether 2016 was an outlier. Most people think it is, and it certainly appears to be one, but we need better evidence before we just justify kicking it out of the data.</p>
+<p>Since we know what’s happening with the death rate, we can now start to work out whether 2016 was an outlier. Most people think it is, and it certainly appears to be one, but we need better evidence before we can justify kicking it out of the data.</p>
 <p>Finding outliers requires another kind of measurement, called the Cook’s Distance. This measures the amount of <em>undue</em> influence a point is having on the slope of our regression line. Some influence is alright - that’s what gives the line its shape - but outlier points exert too much influence on the line and drag it out of place. Unlike the R squared, the Cook’s Distance is just a number; it starts at zero and tends to be very small.</p>
 <p>To help us decide whether a point is an outlier, we have two handy decision-making thresholds. The first is 4/22, but that’s boring and difficult to remember so from here on it’s called the Yikes Line. If a Cook’s Distance is higher than the Yikes Line, it might be an outlier; it has enough undue influence that we should go back and check it out in the context of the data around it, and take it out if it’s being a problem. The second threshold is 1, known here as the Zoinks Line, and if a point exceeds this then it’s definitely an outlier.</p>
 <p>Let’s check out the Cook’s Distances, as measured against the cool and accurate curved line we found earlier:</p>
@@ -203,7 +203,7 @@
 <img src="rawregr.png" />
 
 </div>
-<p>We find that 1995 is on par with years like 1999 and 2002, it just happens to be a little bit high for where it is; not a problem. 2014 is similar to these years as well, but it got flagged as an outlier for being lower than anticipated. 2016 is very high compared to the rest of the data, though; we could justify taking it out to see if it makes the regressions better.</p>
+<p>We find that 1995 is on par with years like 1999 and 2002, it just happens to be a little bit high for where it is; not a problem. 2014 is similar to these years as well, but it got flagged as an outlier for being lower than the points around it. 2016 is very high compared to the rest of the data, though; we could justify taking it out to see if it makes the regressions better.</p>
 <p>Before we do, though, breaking things down by gender again is a good idea. After all, 2016 was allegedly an outlier <em>for women</em>; it might not be one for men at all, and splitting things up could provide some clarity. We take the Cook’s Distances based on the curved lines for men and women (even though the womens’ line failed, we’re allowed to use it; the bits that were broken don’t affect this measurement):</p>
 <div class="figure">
 <img src="CDmen.png" />
@@ -213,7 +213,7 @@
 <img src="CDwomen.png" />
 
 </div>
-<p>Similarly to when we drew the lines earlier, men are fine. 2016 is above the Yikes Line, but it we look at it in the data we find that it was lower than we expected; not an outlier. Women are very much not fine, however. This is the first time the Zoinks line has turned up, and 2016 breaks it. There’s no doubt that, for women, 2016 is an outlier.</p>
+<p>Similarly to when we drew the lines earlier, men are fine. 2016 is above the Yikes Line, but if we look at it in the data we find that it was lower than we expected. Women, on the other hand, are very much <em>not</em> fine. This is the first time the Zoinks line has turned up, and 2016 breaks it. There’s no doubt that, for women, 2016 is an outlier.</p>
 </div>
 <div id="queer-death-over-time-2-outlier-removal-boogaloo" class="section level3">
 <h3><span class="header-section-number">1.4.5</span> Queer Death Over Time 2: Outlier Removal Boogaloo</h3>
